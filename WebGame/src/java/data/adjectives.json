@@ -1,0 +1,25 @@
+{
+    "adjectives": [
+        {
+            "quantities": [
+                {
+                    "quantity": "brother"
+                }],
+            "qualities": [
+                {
+                    "quality": "good"
+                }],
+            "sizes": [
+                {
+                    "size": "big"
+                }],
+            "shapes": [
+                {
+                    "shape": "round"
+                }],
+            "colors": [
+                {
+                    "color": "red"
+                }]
+        }]
+}

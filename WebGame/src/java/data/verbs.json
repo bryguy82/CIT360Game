@@ -1,0 +1,84 @@
+{
+    "verbs": [
+        {
+            "presentTense": [
+                {
+                    "present": "takes"
+                },
+                {
+                    "present": "sees"
+                },
+                {
+                    "present": "opens"
+                },
+                {
+                    "present": "closes"
+                },
+                {
+                    "present": "drives"
+                },
+                {
+                    "present": "walks"
+                },
+                {
+                    "present": "uses"
+                },
+                {
+                    "present": "finds"
+                }]
+        },
+        {
+            "pastTense": [
+                {
+                    "past": "tooks"
+                },
+                {
+                    "past": "saw"
+                },
+                {
+                    "past": "opened"
+                },
+                {
+                    "past": "closed"
+                },
+                {
+                    "past": "drove"
+                },
+                {
+                    "past": "walked"
+                },
+                {
+                    "past": "used"
+                },
+                {
+                    "past": "found"
+                }]
+        },
+        {
+            "futureTense": [
+                {
+                    "future": "take"
+                },
+                {
+                    "future": "see"
+                },
+                {
+                    "future": "open"
+                },
+                {
+                    "future": "close"
+                },
+                {
+                    "future": "drive"
+                },
+                {
+                    "future": "walk"
+                },
+                {
+                    "future": "use"
+                },
+                {
+                    "future": "find"
+                }]
+        }]
+}
