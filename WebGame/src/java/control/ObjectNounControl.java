@@ -6,35 +6,104 @@
 package control;
 
 //import cit360.CIT360;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Serializable;
-import model.ObjectNoun;
+import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.TreeSet;
+import model.Game;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  *
  * @author Bryan
  */
-public class ObjectNounControl implements Serializable, WordSelectorControl {
+public class ObjectNounControl implements Serializable {
 
-    public Object build(int selection, Object[] objectArray) {
+    String urlSite = null;
+    URL url = null;
+    HttpURLConnection connect = null;
+    BufferedReader reader = null;
+    
+    JSONParser jsonParser = new JSONParser();
 
-        objectArray = WordBankControl.buildNounObjectQuantity().toArray();
-        //selection = (int) Math.round(Math.random() * (30 - 1));
-
-        if (selection < 0) {
-            throw new ArrayIndexOutOfBoundsException("Number selected was less than zero.");
-            //return -1
+    // String to hold the data
+    String jsonData = null;
+    
+    public String httpObjectNounBuilder() throws MalformedURLException, IOException, ParseException {
+        
+        urlSite = "https://raw.githubusercontent.com/bryguy82/CIT360Game/master/WebGame/src/java/data/objectNouns.json";
+        url = new URL(urlSite);
+        connect = (HttpURLConnection) url.openConnection();
+        connect.setReadTimeout(3000);
+        connect.setRequestMethod("GET");
+        connect.connect();
+        
+        // Set up input stream to gather data
+        InputStream inputStream = connect.getInputStream();
+        StringBuilder buffer = new StringBuilder();
+        if (inputStream == null) {
+            return null;
         }
-        while (selection > objectArray.length - 1) {
-            if (selection > 20) {
-                throw new ArrayIndexOutOfBoundsException("Number selected was greater than twenty.");
-                //return -2
+        reader = new BufferedReader(new InputStreamReader(inputStream));
+        
+        String lineHolder;
+        while ((lineHolder = reader.readLine()) != null) {
+            // Read in JSON file line by line
+            buffer.append(lineHolder); //.append("\n");
+        }
+        
+        if (buffer.length() == 0) {
+            // nothing in the buffer
+            return null;
+        }
+        
+        // Close the connection and reader.
+        if (connect != null) {
+            connect.disconnect();
+        }
+        if (reader != null) {
+            try {
+                reader.close();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());                    
             }
-            selection = selection - objectArray.length;
         }
+        
+        // Transform the tree into an array.
+        Object[] ObjectNounArray = readJson(buffer.toString());
+        
+        // Globally set the object-noun array in the game.
+        Game game = new Game();
+        game.setObjectNounArray(ObjectNounArray);
+        return null;
+    }
+    
+    public Object[] readJson(String buffer) throws IOException, ParseException {
+        
+        TreeSet<String> objectNounTree = new TreeSet<>();
+        
+        try (StringReader readJson = new StringReader(buffer)) {
+            // JSON object for the file
+            JSONObject objectNounObject = (JSONObject) jsonParser.parse(readJson);
+            // JSON array for the object nouns
+            JSONArray objectNounArray = (JSONArray) objectNounObject.get("objectNouns");
 
-        ObjectNoun objectNoun = new ObjectNoun();
-        objectNoun.setObject(objectArray[selection].toString());
-
-        return objectNoun;
+            // Loop through the string to set up the array
+            for (int i = 0; i < objectNounArray.size(); i++) {
+                JSONObject nounObject = (JSONObject) objectNounArray.get(i);
+                objectNounTree.add(nounObject.get("object").toString());
+            }
+        }
+        
+        return (Object[]) objectNounTree.toArray();
     }
 }

@@ -74,4 +74,8 @@ public class WordBank implements Serializable {
     public String toString() {
         return "";
     }
+
+    public Object getAtomNum() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -25,6 +25,36 @@
                 },
                 {
                     "present": "finds"
+                },
+                {
+                    "present": "discovers"
+                },
+                {
+                    "present": "gives"
+                },
+                {
+                    "present": "calls"
+                },
+                {
+                    "present": "needs"
+                },
+                {
+                    "present": "becomes"
+                },
+                {
+                    "present": "keeps"
+                },
+                {
+                    "present": "helps"
+                },
+                {
+                    "present": "shows"
+                },
+                {
+                    "present": "moves"
+                },
+                {
+                    "present": "pushes"
                 }]
         },
         {
@@ -52,6 +82,36 @@
                 },
                 {
                     "past": "found"
+                },
+                {
+                    "past": "discovered"
+                },
+                {
+                    "past": "gave"
+                },
+                {
+                    "past": "called"
+                },
+                {
+                    "past": "needed"
+                },
+                {
+                    "past": "became"
+                },
+                {
+                    "past": "kept"
+                },
+                {
+                    "past": "helped"
+                },
+                {
+                    "past": "showed"
+                },
+                {
+                    "past": "moved"
+                },
+                {
+                    "past": "pushed"
                 }]
         },
         {
@@ -79,6 +139,36 @@
                 },
                 {
                     "future": "find"
+                },
+                {
+                    "future": "discover"
+                },
+                {
+                    "future": "give"
+                },
+                {
+                    "future": "call"
+                },
+                {
+                    "future": "need"
+                },
+                {
+                    "future": "become"
+                },
+                {
+                    "future": "keep"
+                },
+                {
+                    "future": "help"
+                },
+                {
+                    "future": "show"
+                },
+                {
+                    "future": "move"
+                },
+                {
+                    "future": "push"
                 }]
         }]
 }

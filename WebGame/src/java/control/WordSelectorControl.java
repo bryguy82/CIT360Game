@@ -5,6 +5,10 @@
  */
 package control;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import org.json.simple.parser.ParseException;
+
 /**
  *
  * @author Bryan
@@ -12,5 +16,9 @@ package control;
 public interface WordSelectorControl {
 
     Object build(int a, Object[] speechPart);
+    
+    String httpBuilder() throws MalformedURLException, IOException, ParseException;
+    
+    //String[] readJson(String buffer) throws IOException, ParseException;
 
 }

@@ -16,6 +16,11 @@ public class Game implements Serializable {
     private Game theGame;
     private Player thePlayer;
     private WordBank wordBank;
+    private Object[] personNounArray;
+    private Object[] adverbArray;
+    private Object[] verbObject;
+    private Object[] adjectiveObject;
+    private Object[] objectNounArray;
 //    private Sentence sentence;
 
     public Game() {
@@ -44,6 +49,46 @@ public class Game implements Serializable {
 
     public void setWordBank(WordBank wordBank) {
         this.wordBank = wordBank;
+    }
+
+    public Object[] getPersonNounArray() {
+        return personNounArray;
+    }
+
+    public void setPersonNounArray(Object[] personNounArray) {
+        this.personNounArray = personNounArray;
+    }
+
+    public Object[] getAdverbArray() {
+        return adverbArray;
+    }
+
+    public void setAdverbArray(Object[] adverbArray) {
+        this.adverbArray = adverbArray;
+    }
+
+    public Object[] getVerbObject() {
+        return verbObject;
+    }
+
+    public void setVerbObject(Object[] verbObject) {
+        this.verbObject = verbObject;
+    }
+
+    public Object[] getAdjectiveObject() {
+        return adjectiveObject;
+    }
+
+    public void setAdjectiveObject(Object[] adjectiveObject) {
+        this.adjectiveObject = adjectiveObject;
+    }
+
+    public Object[] getObjectNounArray() {
+        return objectNounArray;
+    }
+
+    public void setObjectNounArray(Object[] objectNounArray) {
+        this.objectNounArray = objectNounArray;
     }
 
 //    public String getTheSentence() {

@@ -1,0 +1,78 @@
+{
+    "objectNouns": [
+        {
+            "object": "ball"
+        },
+        {
+            "object": "backpack"
+        },
+        {
+            "object": "sofa"
+        },
+        {
+            "object": "calendar"
+        },
+        {
+            "object": "computer"
+        },
+        {
+            "object": "mirror"
+        },
+        {
+            "object": "clock"
+        },
+        {
+            "object": "pencil"
+        },
+        {
+            "object": "pen"
+        },
+        {
+            "object": "cell phone"
+        },
+        {
+            "object": "television"
+        },
+        {
+            "object": "notebook"
+        },
+        {
+            "object": "radio"
+        },
+        {
+            "object": "door"
+        },
+        {
+            "object": "window"
+        },
+        {
+            "object": "water bottle"
+        },
+        {
+            "object": "table"
+        },
+        {
+            "object": "chair"
+        },
+        {
+            "object": "trash can"
+        },
+        {
+            "object": "envelope"
+        },
+        {
+            "object": "wallet"
+        },
+        {
+            "object": "closet"
+        },
+        {
+            "object": "umbrella"
+        },
+        {
+            "object": "purse"
+        },
+        {
+            "object": "magazine"
+        }]
+}

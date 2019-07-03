@@ -1,25 +1,254 @@
 {
     "adjectives": [
         {
-            "quantities": [
-                {
-                    "quantity": "brother"
-                }],
             "qualities": [
                 {
+                    "quality": "clever"
+                },
+                {
+                    "quality": "beautiful"
+                },
+                {
+                    "quality": "sweet"
+                },
+                {
                     "quality": "good"
-                }],
+                },
+                {
+                    "quality": "bold"
+                },
+                {
+                    "quality": "strong"
+                },
+                {
+                    "quality": "honest"
+                },
+                {
+                    "quality": "kind"
+                },
+                {
+                    "quality": "moist"
+                },
+                {
+                    "quality": "sticky"
+                },
+                {
+                    "quality": "wet"
+                },
+                {
+                    "quality": "hairy"
+                },
+                {
+                    "quality": "slimy"
+                },
+                {
+                    "quality": "dry"
+                },
+                {
+                    "quality": "oily"
+                },
+                {
+                    "quality": "hard"
+                },
+                {
+                    "quality": "soft"
+                },
+                {
+                    "quality": "chilly"
+                },
+                {
+                    "quality": "stiff"
+                },
+                {
+                    "quality": "sharp"
+                }
+            ],
             "sizes": [
                 {
-                    "size": "big"
-                }],
+                    "size": "puny"
+                },
+                {
+                    "size": "large"
+                },
+                {
+                    "size": "scrawny"
+                },
+                {
+                    "size": "little"
+                },
+                {
+                    "size": "short"
+                },
+                {
+                    "size": "tall"
+                },
+                {
+                    "size": "giant"
+                },
+                {
+                    "size": "gigantic"
+                },
+                {
+                    "size": "huge"
+                },
+                {
+                    "size": "massive"
+                },
+                {
+                    "size": "tiny"
+                },
+                {
+                    "size": "medium"
+                },
+                {
+                    "size": "enormous"
+                },
+                {
+                    "size": "narrow"
+                },
+                {
+                    "size": "thin"
+                },
+                {
+                    "size": "fat"
+                },
+                {
+                    "size": "bite sized"
+                },
+                {
+                    "size": "immense"
+                },
+                {
+                    "size": "miniscule"
+                },
+                {
+                    "size": "thick"
+                }
+            ],
             "shapes": [
                 {
+                    "shape": "distorted"
+                },
+                {
+                    "shape": "flat"
+                },
+                {
                     "shape": "round"
-                }],
+                },
+                {
+                    "shape": "chubby"
+                },
+                {
+                    "shape": "fluffy"
+                },
+                {
+                    "shape": "circular"
+                },
+                {
+                    "shape": "square"
+                },
+                {
+                    "shape": "oval"
+                },
+                {
+                    "shape": "crooked"
+                },
+                {
+                    "shape": "hollow"
+                },
+                {
+                    "shape": "curved"
+                },
+                {
+                    "shape": "straight"
+                },
+                {
+                    "shape": "cylindrical"
+                },
+                {
+                    "shape": "triangular"
+                },
+                {
+                    "shape": "wide"
+                },
+                {
+                    "shape": "rectangular"
+                },
+                {
+                    "shape": "cubed"
+                },
+                {
+                    "shape": "spherical"
+                },
+                {
+                    "shape": "deformed"
+                },
+                {
+                    "shape": "pointed"
+                }
+            ],
             "colors": [
                 {
+                    "color": "gray"
+                },
+                {
+                    "color": "pink"
+                },
+                {
+                    "color": "black"
+                },
+                {
+                    "color": "green"
+                },
+                {
+                    "color": "purple"
+                },
+                {
+                    "color": "blue"
+                },
+                {
+                    "color": "mustard"
+                },
+                {
                     "color": "red"
-                }]
-        }]
+                },
+                {
+                    "color": "yellow"
+                },
+                {
+                    "color": "brown"
+                },
+                {
+                    "color": "orange"
+                },
+                {
+                    "color": "white"
+                },
+                {
+                    "color": "gold"
+                },
+                {
+                    "color": "violet"
+                },
+                {
+                    "color": "fluorescent"
+                },
+                {
+                    "color": "multicolored"
+                },
+                {
+                    "color": "aqua"
+                },
+                {
+                    "color": "lavender"
+                },
+                {
+                    "color": "Navy blue"
+                },
+                {
+                    "color": "turquoise"
+                }
+            ]
+        }
+    ]
 }

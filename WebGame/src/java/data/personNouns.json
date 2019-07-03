@@ -1,0 +1,55 @@
+{
+    "personNouns": [
+        {
+            "person": "brother"
+        },
+        {
+            "person": "sister"
+        },
+        {
+            "person": "sibling"
+        },
+        {
+            "person": "mother"
+        },
+        {
+            "person": "father"
+        },
+        {
+            "person": "grandfather"
+        },
+        {
+            "person": "grandmother"
+        },
+        {
+            "person": "aunt"
+        },
+        {
+            "person": "uncle"
+        },
+        {
+            "person": "cousin"
+        },
+        {
+            "person": "husband"
+        },
+        {
+            "person": "wife"
+        },
+        {
+            "person": "daughter"
+        },
+        {
+            "person": "son"
+        },
+        {
+            "person": "parent"
+        },
+        {
+            "person": "niece"
+        },
+        {
+            "person": "nephew"
+        }
+    ]
+}

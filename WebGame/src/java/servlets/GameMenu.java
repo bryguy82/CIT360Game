@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import control.WordBankControl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Game;
+import model.Player;
+import model.WordBank;
 
 /**
  *
@@ -34,7 +38,34 @@ public class GameMenu extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            /* TODO output your page here. You may use following sample code. */
+            // Build game here.
+            Game game = new Game();
+            Player player = new Player();
+            WordBank wordbank = new WordBank();
+            
+            Object[] personNounArray;
+            Object[] adverbArray;
+            Object[] verbObject;
+            Object[] adjectiveObject;
+            Object[] objectNounArray;
+            
+            
+            WordBankControl wordBankControl = new WordBankControl();
+//            do {           
+                wordBankControl.buildWordBank();
+
+                personNounArray = game.getPersonNounArray();
+                adverbArray = game.getAdverbArray();
+                verbObject = game.getVerbObject();
+                adjectiveObject = game.getAdjectiveObject();
+                objectNounArray = game.getObjectNounArray();
+//            } while (personNounArray.length == 0 || 
+//                     adverbArray.length == 0 || 
+//                     verbObject.length == 0 ||
+//                     adjectiveObject.length == 0 ||
+//                     objectNounArray.length == 0 );
+            
+            String test = (String) personNounArray[1];
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -46,6 +77,7 @@ public class GameMenu extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<div>TODO write content</div>");
+            out.println("<p>" + test + "</p>");
             
             // Form for the random game
             out.println("<form action=\"RandomSentence\" method=\"post\">");

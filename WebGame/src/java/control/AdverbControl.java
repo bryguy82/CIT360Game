@@ -5,37 +5,104 @@
  */
 package control;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Serializable;
-import model.Adverb;
+import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.TreeSet;
 import model.Game;
-//import cit360.CIT360;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  *
  * @author Bryan
  */
-public class AdverbControl implements Serializable, WordSelectorControl {
+public class AdverbControl implements Serializable {
 
-    public Object build(int selection, Object[] adverbArray) {
+    String urlSite = null;
+    URL url = null;
+    HttpURLConnection connect = null;
+    BufferedReader reader = null;
+    
+    JSONParser jsonParser = new JSONParser();
 
-        adverbArray = WordBankControl.buildAdverbTree().toArray();
-        //selection = (int) Math.round(Math.random() * (30 - 1));
-
-        if (selection < 0) {
-            throw new ArrayIndexOutOfBoundsException("Number selected was less than zero.");
-            //return -1
+    // String to hold the data
+    String jsonData = null;
+    
+    public String httpAdverbBuilder() throws MalformedURLException, IOException, ParseException {
+        
+        urlSite = "https://raw.githubusercontent.com/bryguy82/CIT360Game/master/WebGame/src/java/data/adverbs.json";
+        url = new URL(urlSite);
+        connect = (HttpURLConnection) url.openConnection();
+        connect.setReadTimeout(3000);
+        connect.setRequestMethod("GET");
+        connect.connect();
+        
+        // Set up input stream to gather data
+        InputStream inputStream = connect.getInputStream();
+        StringBuilder buffer = new StringBuilder();
+        if (inputStream == null) {
+            return null;
         }
-        while (selection > adverbArray.length - 1) {
-            if (selection > 20) {
-                throw new ArrayIndexOutOfBoundsException("Number selected was greater than twenty.");
-                //return -2
+        reader = new BufferedReader(new InputStreamReader(inputStream));
+        
+        String lineHolder;
+        while ((lineHolder = reader.readLine()) != null) {
+            // Read in JSON file line by line
+            buffer.append(lineHolder); //.append("\n");
+        }
+        
+        if (buffer.length() == 0) {
+            // nothing in the buffer
+            return null;
+        }
+        
+        // Close the connection and reader.
+        if (connect != null) {
+            connect.disconnect();
+        }
+        if (reader != null) {
+            try {
+                reader.close();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());                    
             }
-            selection = selection - adverbArray.length;
         }
+        
+        // Transform the tree into an array.
+        Object[] adverbArray = readJson(buffer.toString());
+        
+        // Globally set the adverb array in the game.
+        Game game = new Game();
+        game.setAdverbArray(adverbArray);
+        return null;
+    }
+    
+    public Object[] readJson(String buffer) throws IOException, ParseException {
+        
+        TreeSet<String> adverbTree = new TreeSet<>();
+        
+        try (StringReader readJson = new StringReader(buffer)) {
+            // JSON object for the file
+            JSONObject adverbObject = (JSONObject) jsonParser.parse(readJson);
+            // JSON array for the adverb nouns
+            JSONArray adverbArray = (JSONArray) adverbObject.get("adverbs");
 
-        Adverb adverb = new Adverb();
-        adverb.setSimpleAdverb(adverbArray[selection].toString());
-
-        return adverb;
+            // Loop through the string to set up the array
+            for (int i = 0; i < adverbArray.size(); i++) {
+                JSONObject adverb = (JSONObject) adverbArray.get(i);
+                adverbTree.add(adverb.get("adverb").toString());
+            }
+        }
+        
+        return (Object[]) adverbTree.toArray();
     }
 }
