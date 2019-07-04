@@ -14,19 +14,19 @@ import org.json.simple.parser.ParseException;
  *
  * @author Bryan
  */
-public class VerbRunnable implements Runnable  {
-    
+public class VerbRunnable implements Runnable {
+
     public VerbRunnable() {
         // Empty constructor
     }
-    
+
     @Override
     public void run() {
         // declare an object
         VerbControl verb = new VerbControl();
         WordBankControl wordBank = new WordBankControl();
         wordBank.getAtomNum().getAndIncrement();
-        
+
         // TODO
         try {
             verb.httpVerbBuilder();

@@ -14,19 +14,19 @@ import org.json.simple.parser.ParseException;
  *
  * @author Bryan
  */
-public class AdjectiveRunnable implements Runnable  {
-    
+public class AdjectiveRunnable implements Runnable {
+
     public AdjectiveRunnable() {
         // Empty constructor
     }
-    
+
     @Override
     public void run() {
         // declare an object
         AdjectiveControl adjective = new AdjectiveControl();
         WordBankControl wordBank = new WordBankControl();
         wordBank.getAtomNum().getAndIncrement();
-        
+
         // TODO
         try {
             adjective.httpAdjectiveBuilder();

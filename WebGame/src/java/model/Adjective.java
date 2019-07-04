@@ -69,7 +69,7 @@ public class Adjective implements Serializable {
     public void setColor(String color) {
         this.color = color;
     }
-    
+
     @Override
     public String toString() {
         return "";

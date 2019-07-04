@@ -18,7 +18,7 @@ public class SentenceGameControl {
     public SentenceGameControl() {
         // Empty contructor
     }
-/*
+    /*
     public static Game createNewSentenceGame(String playerName) {
 
         Player player = new Player();

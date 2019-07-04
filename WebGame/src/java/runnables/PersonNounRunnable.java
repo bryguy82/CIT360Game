@@ -14,19 +14,19 @@ import org.json.simple.parser.ParseException;
  *
  * @author Bryan
  */
-public class PersonNounRunnable implements Runnable  {
-    
+public class PersonNounRunnable implements Runnable {
+
     public PersonNounRunnable() {
         // Empty constructor
     }
-    
+
     @Override
     public void run() {
         // declare an object
         PersonNounControl personNoun = new PersonNounControl();
         WordBankControl wordBank = new WordBankControl();
         wordBank.getAtomNum().getAndIncrement();
-        
+
         // TODO
         try {
             personNoun.httpPersonNounBuilder();

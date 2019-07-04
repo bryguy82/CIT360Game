@@ -26,27 +26,27 @@ import org.json.simple.parser.ParseException;
  *
  * @author Bryan
  */
-public class VerbControl implements Serializable, WordSelectorArrayControl {
+public class VerbControl implements Serializable {
 
     String urlSite = null;
     URL url = null;
     HttpURLConnection connect = null;
     BufferedReader reader = null;
-    
+
     JSONParser jsonParser = new JSONParser();
 
     // String to hold the data
     String jsonData = null;
-    
-    public String httpVerbBuilder() throws MalformedURLException, IOException, ParseException {
-        
+
+    public Object[][] httpVerbBuilder() throws MalformedURLException, IOException, ParseException {
+
         urlSite = "https://raw.githubusercontent.com/bryguy82/CIT360Game/master/WebGame/src/java/data/verbs.json";
         url = new URL(urlSite);
         connect = (HttpURLConnection) url.openConnection();
         connect.setReadTimeout(3000);
         connect.setRequestMethod("GET");
         connect.connect();
-        
+
         // Set up input stream to gather data
         InputStream inputStream = connect.getInputStream();
         StringBuilder buffer = new StringBuilder();
@@ -54,18 +54,18 @@ public class VerbControl implements Serializable, WordSelectorArrayControl {
             return null;
         }
         reader = new BufferedReader(new InputStreamReader(inputStream));
-        
+
         String lineHolder;
         while ((lineHolder = reader.readLine()) != null) {
             // Read in JSON file line by line
             buffer.append(lineHolder); //.append("\n");
         }
-        
+
         if (buffer.length() == 0) {
             // nothing in the buffer
             return null;
         }
-        
+
         // Close the connection and reader.
         if (connect != null) {
             connect.disconnect();
@@ -74,31 +74,32 @@ public class VerbControl implements Serializable, WordSelectorArrayControl {
             try {
                 reader.close();
             } catch (IOException ex) {
-                System.out.println(ex.getMessage());                    
+                System.out.println(ex.getMessage());
             }
         }
-        
+
         // Transform the tree into an array.
-        Object[] verbObject = readJson(buffer.toString());
-        
+        Object[][] verbObject = readJson(buffer.toString());
+
         // Globally set the verb object in the game.
         Game game = new Game();
-        game.setVerbObject(verbObject);
-        return null;
+        game.getTheGame().setVerbDoubleArray(verbObject);
+
+        return verbObject;
     }
-    
-    public Object[] readJson(String buffer) throws IOException, ParseException {
-        
+
+    public Object[][] readJson(String buffer) throws IOException, ParseException {
+
         TreeSet<String> presentTree = new TreeSet<>();
         TreeSet<String> pastTree = new TreeSet<>();
         TreeSet<String> futureTree = new TreeSet<>();
-        
+
         try (StringReader readJson = new StringReader(buffer)) {
             // JSON object for the file
             JSONObject verbObject = (JSONObject) jsonParser.parse(readJson);
             // JSON array for the verbs
             JSONArray verbArray = (JSONArray) verbObject.get("verbs");
-            
+
             // Present tense
             JSONObject presentVerbObject = (JSONObject) verbArray.get(0);
             JSONArray presentVerbArray = (JSONArray) presentVerbObject.get("presentTense");
@@ -107,18 +108,18 @@ public class VerbControl implements Serializable, WordSelectorArrayControl {
                 JSONObject verb = (JSONObject) presentVerbArray.get(i);
                 presentTree.add(verb.get("present").toString());
             }
-            
+
             // Past tense
-            JSONObject pastVerbObject = (JSONObject) verbArray.get(0);
+            JSONObject pastVerbObject = (JSONObject) verbArray.get(1);
             JSONArray pastVerbArray = (JSONArray) pastVerbObject.get("pastTense");
             // Loop through the string to set up the array
             for (int i = 0; i < pastVerbArray.size(); i++) {
                 JSONObject verb = (JSONObject) pastVerbArray.get(i);
                 pastTree.add(verb.get("past").toString());
             }
-            
+
             // Future tense
-            JSONObject futureVerbObject = (JSONObject) verbArray.get(0);
+            JSONObject futureVerbObject = (JSONObject) verbArray.get(2);
             JSONArray futureVerbArray = (JSONArray) futureVerbObject.get("futureTense");
             // Loop through the string to set up the array
             for (int i = 0; i < futureVerbArray.size(); i++) {
@@ -126,92 +127,34 @@ public class VerbControl implements Serializable, WordSelectorArrayControl {
                 futureTree.add(verb.get("future").toString());
             }
         }
-        Object[] verbs = new String[3];
-        verbs[0] = presentTree.toArray();
-        verbs[1] = pastTree.toArray();
-        verbs[2] = futureTree.toArray();
-        
+        Object[] present = presentTree.toArray();
+        Object[] past = pastTree.toArray();
+        Object[] future = futureTree.toArray();
+        // Add the arrays to a double array
+        Object[][] verbs = buildTwoDimentionalArray(present, past, future);
+
         return verbs;
     }
-    
-    public Object build(int selection, int listSize, Object[] verbPresentArray) {
 
-        verbPresentArray = VocabularyControl.buildVerbPresent().toArray();
-        Object[] verbPastArray = VocabularyControl.buildVerbPast().toArray();
-        Object[] verbFutureArray = VocabularyControl.buildVerbFuture().toArray();
+    public Object[][] buildTwoDimentionalArray(Object[] a, Object[] b, Object[] c) {
 
-        //selection = (int) Math.round(Math.random() * (30 - 1));
-        listSize = (int) Math.round(Math.random() * (2 - 0));
-
-        if (selection < 0) {
-            throw new ArrayIndexOutOfBoundsException("Number selected was less than zero.");
-            //return -1
-        }
-        while (selection > verbPresentArray.length - 1) {
-            if (selection > 20) {
-                throw new ArrayIndexOutOfBoundsException("Number selected was greater than twenty.");
-                //return -2
-            }
-            selection = selection - verbPresentArray.length;
-        }
-
-        Object[][] verbTenses = new Object[3][verbPresentArray.length];
+        Object[][] verbTenses = new Object[3][a.length];
         // Populate two dimentional array[tense][word]
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < verbPresentArray.length; j++) {
+            for (int j = 0; j < a.length; j++) {
                 switch (i) {
                     case 0:
-                        verbTenses[i][j] = verbPresentArray[j].toString();
+                        verbTenses[i][j] = a[j].toString();
                         break;
                     case 1:
-                        verbTenses[i][j] = verbPastArray[j].toString();
+                        verbTenses[i][j] = b[j].toString();
                         break;
                     default:
-                        verbTenses[i][j] = verbFutureArray[j].toString();
+                        verbTenses[i][j] = c[j].toString();
                         break;
                 }
             }
         }
-
-        Verb verb = new Verb();
-        verb.setVerb(verbTenses[listSize][selection].toString());
-
-        return verb;
+        return verbTenses;
     }
-
-    /*
-    public static void VerbSelect(int counter, int list) {
-
-        String verb = "";
-        // Convert TreeSets to String[]
-        Object[] verbPresentArray = WordBankControl.buildVerbPresent().toArray();
-        Object[] verbPastArray = WordBankControl.buildVerbPast().toArray();
-        Object[] verbFutureArray = WordBankControl.buildVerbFuture().toArray();
-
-        while (counter > verbPresentArray.length) {
-            counter = counter - verbPresentArray.length / 2;
-        }
-        Object[][] verbTenses = new Object[3][verbPresentArray.length];
-        // Populate two dimentional array[tense][word]
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < verbPresentArray.length; j++) {
-                switch (i) {
-                    case 0:
-                        verbTenses[i][j] = verbPresentArray[j].toString();
-                        break;
-                    case 1:
-                        verbTenses[i][j] = verbPastArray[j].toString();
-                        break;
-                    default:
-                        verbTenses[i][j] = verbFutureArray[j].toString();
-                        break;
-                }
-            }
-        }
-
-        verb = verbTenses[list][counter].toString();
-
-        //CIT360.getCurrentGame().getWordBank().setVerb(verb);
-    }
-     */
 }

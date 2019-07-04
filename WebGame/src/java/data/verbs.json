@@ -55,7 +55,8 @@
                 },
                 {
                     "present": "pushes"
-                }]
+                }
+            ]
         },
         {
             "pastTense": [
@@ -112,7 +113,8 @@
                 },
                 {
                     "past": "pushed"
-                }]
+                }
+            ]
         },
         {
             "futureTense": [
@@ -169,6 +171,8 @@
                 },
                 {
                     "future": "push"
-                }]
-        }]
+                }
+            ]
+        }
+    ]
 }

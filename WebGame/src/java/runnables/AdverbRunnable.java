@@ -14,19 +14,19 @@ import org.json.simple.parser.ParseException;
  *
  * @author Bryan
  */
-public class AdverbRunnable implements Runnable  {
-    
+public class AdverbRunnable implements Runnable {
+
     public AdverbRunnable() {
         // Empty constructor
     }
-    
+
     @Override
     public void run() {
         // declare an object
         AdverbControl adverb = new AdverbControl();
         WordBankControl wordBank = new WordBankControl();
         wordBank.getAtomNum().getAndIncrement();
-        
+
         // TODO
         try {
             adverb.httpAdverbBuilder();

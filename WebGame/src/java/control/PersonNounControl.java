@@ -31,21 +31,21 @@ public class PersonNounControl implements Serializable {
     URL url = null;
     HttpURLConnection connect = null;
     BufferedReader reader = null;
-    
+
     JSONParser jsonParser = new JSONParser();
 
     // String to hold the data
     String jsonData = null;
-    
-    public String httpPersonNounBuilder() throws MalformedURLException, IOException, ParseException {
-        
+
+    public Object[] httpPersonNounBuilder() throws MalformedURLException, IOException, ParseException {
+
         urlSite = "https://raw.githubusercontent.com/bryguy82/CIT360Game/master/WebGame/src/java/data/personNouns.json";
         url = new URL(urlSite);
         connect = (HttpURLConnection) url.openConnection();
         connect.setReadTimeout(3000);
         connect.setRequestMethod("GET");
         connect.connect();
-        
+
         // Set up input stream to gather data
         InputStream inputStream = connect.getInputStream();
         StringBuilder buffer = new StringBuilder();
@@ -53,18 +53,18 @@ public class PersonNounControl implements Serializable {
             return null;
         }
         reader = new BufferedReader(new InputStreamReader(inputStream));
-        
+
         String lineHolder;
         while ((lineHolder = reader.readLine()) != null) {
             // Read in JSON file line by line
             buffer.append(lineHolder); //.append("\n");
         }
-        
+
         if (buffer.length() == 0) {
             // nothing in the buffer
             return null;
         }
-        
+
         // Close the connection and reader.
         if (connect != null) {
             connect.disconnect();
@@ -73,24 +73,24 @@ public class PersonNounControl implements Serializable {
             try {
                 reader.close();
             } catch (IOException ex) {
-                System.out.println(ex.getMessage());                    
+                System.out.println(ex.getMessage());
             }
         }
-        
+
         // Transform the tree into an array.
         Object[] PersonNounArray = readJson(buffer.toString());
-        
+
         // Globally set the person-noun array in the game.
         Game game = new Game();
-        game.setPersonNounArray(PersonNounArray);
-        
-        return null;
+        game.getTheGame().setPersonNounArray(PersonNounArray);
+
+        return PersonNounArray;
     }
-    
+
     public Object[] readJson(String buffer) throws IOException, ParseException {
-        
+
         TreeSet<String> personNounTree = new TreeSet<>();
-        
+
         try (StringReader readJson = new StringReader(buffer)) {
             // JSON object for the file
             JSONObject personNounObject = (JSONObject) jsonParser.parse(readJson);
@@ -103,30 +103,7 @@ public class PersonNounControl implements Serializable {
                 personNounTree.add(nounPerson.get("person").toString());
             }
         }
-        
-        return (Object[]) personNounTree.toArray();
-    }
-    
-    public Object build(int selection, Object[] personArray) {
-
-        personArray = VocabularyControl.buildNounPersonQuantity().toArray();
-        //selection = (int) Math.round(Math.random() * (30 - 1));
-
-        if (selection < 0) {
-            throw new ArrayIndexOutOfBoundsException("Number selected was less than zero.");
-            //return -1
-        }
-        while (selection > personArray.length - 1) {
-            if (selection > 20) {
-                throw new ArrayIndexOutOfBoundsException("Number selected was greater than twenty.");
-                //return -2
-            }
-            selection = selection - personArray.length;
-        }
-
-        PersonNoun personNoun = new PersonNoun();
-        personNoun.setPerson(personArray[selection].toString());
-
-        return personNoun;
+        Object[] noun = personNounTree.toArray();
+        return noun;
     }
 }

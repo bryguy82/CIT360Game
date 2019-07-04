@@ -31,21 +31,21 @@ public class AdverbControl implements Serializable {
     URL url = null;
     HttpURLConnection connect = null;
     BufferedReader reader = null;
-    
+
     JSONParser jsonParser = new JSONParser();
 
     // String to hold the data
     String jsonData = null;
-    
-    public String httpAdverbBuilder() throws MalformedURLException, IOException, ParseException {
-        
+
+    public Object[] httpAdverbBuilder() throws MalformedURLException, IOException, ParseException {
+
         urlSite = "https://raw.githubusercontent.com/bryguy82/CIT360Game/master/WebGame/src/java/data/adverbs.json";
         url = new URL(urlSite);
         connect = (HttpURLConnection) url.openConnection();
         connect.setReadTimeout(3000);
         connect.setRequestMethod("GET");
         connect.connect();
-        
+
         // Set up input stream to gather data
         InputStream inputStream = connect.getInputStream();
         StringBuilder buffer = new StringBuilder();
@@ -53,18 +53,18 @@ public class AdverbControl implements Serializable {
             return null;
         }
         reader = new BufferedReader(new InputStreamReader(inputStream));
-        
+
         String lineHolder;
         while ((lineHolder = reader.readLine()) != null) {
             // Read in JSON file line by line
             buffer.append(lineHolder); //.append("\n");
         }
-        
+
         if (buffer.length() == 0) {
             // nothing in the buffer
             return null;
         }
-        
+
         // Close the connection and reader.
         if (connect != null) {
             connect.disconnect();
@@ -73,23 +73,24 @@ public class AdverbControl implements Serializable {
             try {
                 reader.close();
             } catch (IOException ex) {
-                System.out.println(ex.getMessage());                    
+                System.out.println(ex.getMessage());
             }
         }
-        
+
         // Transform the tree into an array.
         Object[] adverbArray = readJson(buffer.toString());
-        
+
         // Globally set the adverb array in the game.
         Game game = new Game();
-        game.setAdverbArray(adverbArray);
-        return null;
+        game.getTheGame().setAdverbArray(adverbArray);
+
+        return adverbArray;
     }
-    
+
     public Object[] readJson(String buffer) throws IOException, ParseException {
-        
+
         TreeSet<String> adverbTree = new TreeSet<>();
-        
+
         try (StringReader readJson = new StringReader(buffer)) {
             // JSON object for the file
             JSONObject adverbObject = (JSONObject) jsonParser.parse(readJson);
@@ -102,7 +103,7 @@ public class AdverbControl implements Serializable {
                 adverbTree.add(adverb.get("adverb").toString());
             }
         }
-        
-        return (Object[]) adverbTree.toArray();
+        Object[] adverb = adverbTree.toArray();
+        return adverb;
     }
 }

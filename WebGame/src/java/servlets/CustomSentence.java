@@ -41,7 +41,7 @@ public class CustomSentence extends HttpServlet {
             out.println("<meta charset=\"utf-8\">");
             out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">");
             out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css\">");
-            out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"basicCss.css\">");              
+            out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"basicCss.css\">");
             out.println("</head>");
             out.println("<body>");
             out.println("<p>Custom page</p>");

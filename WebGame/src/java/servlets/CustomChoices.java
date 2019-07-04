@@ -41,22 +41,22 @@ public class CustomChoices extends HttpServlet {
             out.println("<meta charset=\"utf-8\">");
             out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">");
             out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css\">");
-            out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"basicCss.css\">");           
+            out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"basicCss.css\">");
             out.println("</head>");
             out.println("<body>");
-            
+
             // Form for nouns, verbs, etc.
             out.println("<form action=\"CustomSentence\" method=\"post\">");
             out.println("<fieldset class=\"custom\">");
             out.println("<legend>Parts of Speech</legend>");
-            
+
             out.println("<label class=\"above\">Person Noun<input type=\"number\" name=\"personNoun\" min=\"0\" max=\"10\" autofocus required></label>");
             out.println("<label class=\"above\">Adverb<input type=\"number\" name=\"adverb\" min=\"0\" max=\"10\" required></label>");
             out.println("<label class=\"above\">Verb<input type=\"number\" name=\"verb\" min=\"0\" max=\"10\" required></label>");
             out.println("<label class=\"above\">Adjective<input type=\"number\" name=\"adjective\" min=\"0\" max=\"10\" required></label>");
             out.println("<label class=\"above\">Object Noun<input type=\"number\" name=\"objectNoun\" min=\"0\" max=\"10\" required></label>");
             out.println("<input class=\"above\" type=\"submit\" value=\"Go!\">");
-            
+
             out.println("</fieldset>");
             out.println("</form>");
 

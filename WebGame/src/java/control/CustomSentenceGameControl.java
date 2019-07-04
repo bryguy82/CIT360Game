@@ -17,7 +17,7 @@ public class CustomSentenceGameControl {
     public CustomSentenceGameControl() {
 
     }
-/*
+    /*
     public void buildsCustomSentence(String[] inputs) {
 
         WordBank wordBank = null;// = CIT360.getCurrentGame().getWordBank();

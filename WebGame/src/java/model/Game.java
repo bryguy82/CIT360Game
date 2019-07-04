@@ -13,13 +13,13 @@ import java.io.Serializable;
  */
 public class Game implements Serializable {
 
-    private Game theGame;
+    private static Game theGame;
     private Player thePlayer;
     private WordBank wordBank;
     private Object[] personNounArray;
     private Object[] adverbArray;
-    private Object[] verbObject;
-    private Object[] adjectiveObject;
+    private Object[][] verbDoubleArray;
+    private Object[][] adjectiveDoubleArray;
     private Object[] objectNounArray;
 //    private Sentence sentence;
 
@@ -67,20 +67,20 @@ public class Game implements Serializable {
         this.adverbArray = adverbArray;
     }
 
-    public Object[] getVerbObject() {
-        return verbObject;
+    public Object[][] getVerbDoubleArray() {
+        return verbDoubleArray;
     }
 
-    public void setVerbObject(Object[] verbObject) {
-        this.verbObject = verbObject;
+    public void setVerbDoubleArray(Object[][] verbDoubleArray) {
+        this.verbDoubleArray = verbDoubleArray;
     }
 
-    public Object[] getAdjectiveObject() {
-        return adjectiveObject;
+    public Object[][] getAdjectiveDoubleArray() {
+        return adjectiveDoubleArray;
     }
 
-    public void setAdjectiveObject(Object[] adjectiveObject) {
-        this.adjectiveObject = adjectiveObject;
+    public void setAdjectiveDoubleArray(Object[][] adjectiveDoubleArray) {
+        this.adjectiveDoubleArray = adjectiveDoubleArray;
     }
 
     public Object[] getObjectNounArray() {
