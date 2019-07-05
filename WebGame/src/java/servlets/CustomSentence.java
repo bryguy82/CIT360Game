@@ -45,8 +45,9 @@ public class CustomSentence extends HttpServlet {
             int verbNum = Integer.parseInt(request.getParameter("verb"));
             int adjectiveNum = Integer.parseInt(request.getParameter("adjective"));
             int objectNum = Integer.parseInt(request.getParameter("objectNoun"));
+            int placeNum = Integer.parseInt(request.getParameter("placeNoun"));
             int sentenceNum = Integer.parseInt(request.getParameter("sentenceNum"));
-            int placeNum = Integer.parseInt(request.getParameter("placeNum"));
+            
 
             // insert selections to retrieve words and set sentence options
             wordControl.wordSelection(personNum, adverbNum, verbTenseNum, verbNum, adjectiveNum, objectNum, placeNum);

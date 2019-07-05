@@ -40,7 +40,7 @@ public class WordBankControl implements Serializable {
         threadController.put(2, new VerbRunnable());
         threadController.put(3, new AdjectiveRunnable());
         threadController.put(4, new ObjectNounRunnable());
-        threadController.put(5, new PersonNounRunnable());
+        threadController.put(5, new PlaceNounRunnable());
 
         // Starting executors
         for (int i = 0; i < threadController.size(); i++) {
@@ -118,10 +118,10 @@ public class WordBankControl implements Serializable {
         String sentence3 = "The " + shape + " " + person + " " + adverb + " " + verb + " the "
                 + quantity + " " + quality + " " + size + " " + color + " " + object + "s.";
 
-        String sentence4 = "The " + shape + " " + person + " at the" + place + " " + adverb + " " + verb + " the "
+        String sentence4 = "The " + shape + " " + person + " at the " + place + " " + adverb + " " + verb + " the "
                 + quantity + " " + quality + " " + size + " " + color + " " + object + "s.";
 
-        String sentence5 = "The " + shape + " " + person + " at the" + color + " " + place + " " + adverb + " " + verb + " the "
+        String sentence5 = "The " + shape + " " + person + " at the " + color + " " + place + " " + adverb + " " + verb + " the "
                 + quantity + " " + quality + " " + size + " " + object + "s.";
 
         Map<Integer, String> sentenceMap = new HashMap<>();
