@@ -16,8 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Game;
-import model.Player;
-import model.WordBank;
+//import model.Player;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -43,60 +42,16 @@ public class GameMenu extends HttpServlet {
 
             // Build game here.
             Game game = new Game();
-            Player player = new Player();
-            WordBank wordbank = new WordBank();
+//            Player player = new Player();
             game.setTheGame(game);
-            game.setThePlayer(player);
-            game.setWordBank(wordbank);
+//            game.setThePlayer(player);
 
-            // Object array holders
-            Object[] personNounArray;
-            Object[] adverbArray;
-            Object[][] verbObject;
-            Object[][] adjectiveObject;
-            Object[] objectNounArray;
+            String empty = " ";
 
-            // Set up the arrays: thread, http, json
+            // Set up the arrays: thread, http, json, ACP
             WordBankControl wordBankControl = new WordBankControl();
             wordBankControl.buildWordBank();
-
-            // Get arrays from game object to test
-            personNounArray = game.getTheGame().getPersonNounArray();
-            adverbArray = game.getTheGame().getAdverbArray();
-            verbObject = game.getTheGame().getVerbDoubleArray();
-            adjectiveObject = game.getTheGame().getAdjectiveDoubleArray();
-            objectNounArray = game.getTheGame().getObjectNounArray();
-
-            String testing1 = "";
-            String testing2 = "";
-            String testing3 = "";
-            String testing4 = "";
-            String testing5 = "";
-            if (personNounArray == null) {
-                testing1 = "bad";
-            } else {
-                testing1 = "good";
-            }
-            if (adverbArray == null) {
-                testing2 = "bad";
-            } else {
-                testing2 = "good";
-            }
-            if (verbObject == null) {
-                testing3 = "bad";
-            } else {
-                testing3 = "good";
-            }
-            if (adjectiveObject == null) {
-                testing4 = "bad";
-            } else {
-                testing4 = "good";
-            }
-            if (objectNounArray == null) {
-                testing5 = "bad";
-            } else {
-                testing5 = "good";
-            }
+            wordBankControl.buildTheSentence(empty, empty, empty, empty, empty, empty, empty, empty, empty, empty);
 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -105,24 +60,27 @@ public class GameMenu extends HttpServlet {
             out.println("<meta charset=\"utf-8\">");
             out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">");
             out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css\">");
-            out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"basicCss.css\">");
+            out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"smallCss.css\">");
             out.println("</head>");
             out.println("<body>");
-//            out.println("<p>" + testing1 +"</p>");
-//            out.println("<p>" + testing2 +"</p>");
-//            out.println("<p>" + testing3 +"</p>");
-//            out.println("<p>" + testing4 +"</p>");
-//            out.println("<p>" + testing5 +"</p>");
+
+            out.println("<div class=\"title\">");
+            out.println("<h1>Please choose a game:</h1>");
+            out.println("</div>");
 
             // Form for the random game
+            out.println("<div class=\"game\">");
             out.println("<form action=\"RandomSentence\" method=\"post\">");
-            out.println("<input class=\"above\" type=\"submit\" value=\"Random Sentence\">");
+            out.println("<input type=\"submit\" value=\"Random Sentence\">");
             out.println("</form>");
+            out.println("</div>");
 
             // From for the custom game
+            out.println("<div class=\"game\">");
             out.println("<form action=\"CustomChoices\" method=\"post\">");
-            out.println("<input class=\"above\" type=\"submit\" value=\"Custom Sentence\">");
+            out.println("<input type=\"submit\" value=\"Custom Sentence\">");
             out.println("</form>");
+            out.println("</div>");
 
             out.println("</body>");
             out.println("</html>");

@@ -1,0 +1,58 @@
+{
+    "places": [
+        {
+            "place": "church"
+        },
+        {
+            "place": "bank"
+        },
+        {
+            "place": "park"
+        },
+        {
+            "place": "grocery store"
+        },
+        {
+            "place": "library"
+        },
+        {
+            "place": "airport"
+        },
+        {
+            "place": "school"
+        },
+        {
+            "place": "restaurant"
+        },
+        {
+            "place": "movie theater"
+        },
+        {
+            "place": "museum"
+        },
+        {
+            "place": "zoo"
+        },
+        {
+            "place": "circus"
+        },
+        {
+            "place": "cemetery"
+        },
+        {
+            "place": "gym"
+        },
+        {
+            "place": "beauty salon"
+        },
+        {
+            "place": "barber shop"
+        },
+        {
+            "place": "stadium"
+        },
+        {
+            "place": "prison"
+        }
+    ]
+}

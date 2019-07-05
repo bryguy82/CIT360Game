@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  *
@@ -15,13 +16,13 @@ public class Game implements Serializable {
 
     private static Game theGame;
     private Player thePlayer;
-    private WordBank wordBank;
     private Object[] personNounArray;
     private Object[] adverbArray;
     private Object[][] verbDoubleArray;
     private Object[][] adjectiveDoubleArray;
     private Object[] objectNounArray;
-//    private Sentence sentence;
+    private Object[] placeNounArray;
+    private Map<Integer, String> sentence;
 
     public Game() {
         // Empty constructor        
@@ -41,14 +42,6 @@ public class Game implements Serializable {
 
     public void setThePlayer(Player thePlayer) {
         this.thePlayer = thePlayer;
-    }
-
-    public WordBank getWordBank() {
-        return wordBank;
-    }
-
-    public void setWordBank(WordBank wordBank) {
-        this.wordBank = wordBank;
     }
 
     public Object[] getPersonNounArray() {
@@ -91,13 +84,22 @@ public class Game implements Serializable {
         this.objectNounArray = objectNounArray;
     }
 
-//    public String getTheSentence() {
-//        return theSentence;
-//    }
-//
-//    public void setTheSentence(String theSentence) {
-//        this.theSentence = theSentence;
-//    }
+    public Object[] getPlaceNounArray() {
+        return placeNounArray;
+    }
+
+    public void setPlaceNounArray(Object[] placeNounArray) {
+        this.placeNounArray = placeNounArray;
+    }
+
+    public Map<Integer, String> getSentence() {
+        return sentence;
+    }
+
+    public void setSentence(Map<Integer, String> sentence) {
+        this.sentence = sentence;
+    }
+
     @Override
     public String toString() {
         return "Game " + theGame;

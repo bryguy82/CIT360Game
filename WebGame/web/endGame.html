@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <title>End of the Road</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-        <link type="text/css" rel="stylesheet" href="basicCss.css">
+        <link type="text/css" rel="stylesheet" href="smallCss.css">
     </head>
     <body>
+        <div class="title">
+            <h1>Would you like to play again?</h1>
+        </div>
 
-        <form action="GameMenu" method="post">
-            <fieldset class="custom">
-                <legend> Would you like to play again? </legend>
+        <div class="game">
+            <form action="GameMenu" method="post">
                 <input class="above" type="submit" value="Yes!">
-            </fieldset>
-        </form>
+            </form>
+        </div>
 
-        <button><a href="index.html">No</a></button>
+        <div class="game">
+            <button><a href="index.html">No</a></button>
+        </div>
 
     </body>
 </html>

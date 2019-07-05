@@ -1,64 +1,6 @@
 {
     "verbs": [
         {
-            "presentTense": [
-                {
-                    "present": "takes"
-                },
-                {
-                    "present": "sees"
-                },
-                {
-                    "present": "opens"
-                },
-                {
-                    "present": "closes"
-                },
-                {
-                    "present": "drives"
-                },
-                {
-                    "present": "walks"
-                },
-                {
-                    "present": "uses"
-                },
-                {
-                    "present": "finds"
-                },
-                {
-                    "present": "discovers"
-                },
-                {
-                    "present": "gives"
-                },
-                {
-                    "present": "calls"
-                },
-                {
-                    "present": "needs"
-                },
-                {
-                    "present": "becomes"
-                },
-                {
-                    "present": "keeps"
-                },
-                {
-                    "present": "helps"
-                },
-                {
-                    "present": "shows"
-                },
-                {
-                    "present": "moves"
-                },
-                {
-                    "present": "pushes"
-                }
-            ]
-        },
-        {
             "pastTense": [
                 {
                     "past": "tooks"
@@ -113,6 +55,64 @@
                 },
                 {
                     "past": "pushed"
+                }
+            ]
+        },
+        {
+            "presentTense": [
+                {
+                    "present": "takes"
+                },
+                {
+                    "present": "sees"
+                },
+                {
+                    "present": "opens"
+                },
+                {
+                    "present": "closes"
+                },
+                {
+                    "present": "drives"
+                },
+                {
+                    "present": "walks"
+                },
+                {
+                    "present": "uses"
+                },
+                {
+                    "present": "finds"
+                },
+                {
+                    "present": "discovers"
+                },
+                {
+                    "present": "gives"
+                },
+                {
+                    "present": "calls"
+                },
+                {
+                    "present": "needs"
+                },
+                {
+                    "present": "becomes"
+                },
+                {
+                    "present": "keeps"
+                },
+                {
+                    "present": "helps"
+                },
+                {
+                    "present": "shows"
+                },
+                {
+                    "present": "moves"
+                },
+                {
+                    "present": "pushes"
                 }
             ]
         },

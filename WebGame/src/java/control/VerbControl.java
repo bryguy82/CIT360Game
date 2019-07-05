@@ -16,7 +16,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.TreeSet;
 import model.Game;
-import model.Verb;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -90,8 +89,8 @@ public class VerbControl implements Serializable {
 
     public Object[][] readJson(String buffer) throws IOException, ParseException {
 
-        TreeSet<String> presentTree = new TreeSet<>();
         TreeSet<String> pastTree = new TreeSet<>();
+        TreeSet<String> presentTree = new TreeSet<>();
         TreeSet<String> futureTree = new TreeSet<>();
 
         try (StringReader readJson = new StringReader(buffer)) {
@@ -100,22 +99,22 @@ public class VerbControl implements Serializable {
             // JSON array for the verbs
             JSONArray verbArray = (JSONArray) verbObject.get("verbs");
 
-            // Present tense
-            JSONObject presentVerbObject = (JSONObject) verbArray.get(0);
-            JSONArray presentVerbArray = (JSONArray) presentVerbObject.get("presentTense");
-            // Loop through the string to set up the array
-            for (int i = 0; i < presentVerbArray.size(); i++) {
-                JSONObject verb = (JSONObject) presentVerbArray.get(i);
-                presentTree.add(verb.get("present").toString());
-            }
-
             // Past tense
-            JSONObject pastVerbObject = (JSONObject) verbArray.get(1);
+            JSONObject pastVerbObject = (JSONObject) verbArray.get(0);
             JSONArray pastVerbArray = (JSONArray) pastVerbObject.get("pastTense");
             // Loop through the string to set up the array
             for (int i = 0; i < pastVerbArray.size(); i++) {
                 JSONObject verb = (JSONObject) pastVerbArray.get(i);
                 pastTree.add(verb.get("past").toString());
+            }
+
+            // Present tense
+            JSONObject presentVerbObject = (JSONObject) verbArray.get(1);
+            JSONArray presentVerbArray = (JSONArray) presentVerbObject.get("presentTense");
+            // Loop through the string to set up the array
+            for (int i = 0; i < presentVerbArray.size(); i++) {
+                JSONObject verb = (JSONObject) presentVerbArray.get(i);
+                presentTree.add(verb.get("present").toString());
             }
 
             // Future tense
@@ -127,11 +126,11 @@ public class VerbControl implements Serializable {
                 futureTree.add(verb.get("future").toString());
             }
         }
-        Object[] present = presentTree.toArray();
         Object[] past = pastTree.toArray();
+        Object[] present = presentTree.toArray();
         Object[] future = futureTree.toArray();
         // Add the arrays to a double array
-        Object[][] verbs = buildTwoDimentionalArray(present, past, future);
+        Object[][] verbs = buildTwoDimentionalArray(past, present, future);
 
         return verbs;
     }

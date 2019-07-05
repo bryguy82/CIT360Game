@@ -1,0 +1,67 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 1, 2019, 4:04:18 PM
+    Author     : Bryan
+*/
+
+html {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    display: grid;
+    height: 100%;
+    text-align: center;
+    background-color: cadetblue;
+}
+
+body div {
+    display: grid;
+}
+
+body div.title  {
+    margin: 0;
+    padding: 2em 1em;
+}
+
+body div.title h1 {
+    margin: 0;
+}
+
+body form {
+    display: inline-grid;
+    max-width: 450px;
+}
+
+body div.sentence {
+    padding: 0 1em;
+    font-size: 2em;
+}
+
+body div.end,
+body div.game {
+    padding: 3em 3em;
+}
+
+body div.game,
+body div.button,
+body div.end button {
+    height: 160px;
+}
+
+body div.game button a,
+body div.button a,
+body div.end button a {
+    padding: 50px 100px;
+    text-decoration: none;
+}
+
+a:link, a:visited, a:focus, a:hover, a:active {
+    color: #000000;
+    font-weight: 600;
+}

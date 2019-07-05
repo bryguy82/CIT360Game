@@ -15,7 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.TreeSet;
-import model.*;
+import model.Game;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -25,7 +25,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author Bryan
  */
-public class PersonNounControl implements Serializable {
+public class PlaceNounControl implements Serializable {
 
     String urlSite = null;
     URL url = null;
@@ -39,7 +39,7 @@ public class PersonNounControl implements Serializable {
 
     public Object[] httpPersonNounBuilder() throws MalformedURLException, IOException, ParseException {
 
-        urlSite = "https://raw.githubusercontent.com/bryguy82/CIT360Game/master/WebGame/src/java/data/personNouns.json";
+        urlSite = "https://raw.githubusercontent.com/bryguy82/CIT360Game/master/WebGame/src/java/data/places.json";
         url = new URL(urlSite);
         connect = (HttpURLConnection) url.openConnection();
         connect.setReadTimeout(3000);
@@ -78,32 +78,32 @@ public class PersonNounControl implements Serializable {
         }
 
         // Transform the tree into an array.
-        Object[] PersonNounArray = readJson(buffer.toString());
+        Object[] placeNounArray = readJson(buffer.toString());
 
         // Globally set the person noun array in the game.
         Game game = new Game();
-        game.getTheGame().setPersonNounArray(PersonNounArray);
+        game.getTheGame().setPlaceNounArray(placeNounArray);
 
-        return PersonNounArray;
+        return placeNounArray;
     }
 
     public Object[] readJson(String buffer) throws IOException, ParseException {
 
-        TreeSet<String> personNounTree = new TreeSet<>();
+        TreeSet<String> placeNounTree = new TreeSet<>();
 
         try (StringReader readJson = new StringReader(buffer)) {
             // JSON object for the file
-            JSONObject personNounObject = (JSONObject) jsonParser.parse(readJson);
-            // JSON array for the person nouns
-            JSONArray personNounArray = (JSONArray) personNounObject.get("personNouns");
+            JSONObject placeNounObject = (JSONObject) jsonParser.parse(readJson);
+            // JSON array for the place nouns
+            JSONArray placeNounArray = (JSONArray) placeNounObject.get("places");
 
             // Loop through the string to set up the array
-            for (int i = 0; i < personNounArray.size(); i++) {
-                JSONObject nounPerson = (JSONObject) personNounArray.get(i);
-                personNounTree.add(nounPerson.get("person").toString());
+            for (int i = 0; i < placeNounArray.size(); i++) {
+                JSONObject placeNoun = (JSONObject) placeNounArray.get(i);
+                placeNounTree.add(placeNoun.get("place").toString());
             }
         }
-        Object[] noun = personNounTree.toArray();
-        return noun;
+        Object[] placeNoun = placeNounTree.toArray();
+        return placeNoun;
     }
 }

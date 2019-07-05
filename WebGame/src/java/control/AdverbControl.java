@@ -94,7 +94,7 @@ public class AdverbControl implements Serializable {
         try (StringReader readJson = new StringReader(buffer)) {
             // JSON object for the file
             JSONObject adverbObject = (JSONObject) jsonParser.parse(readJson);
-            // JSON array for the adverb nouns
+            // JSON array for the adverb
             JSONArray adverbArray = (JSONArray) adverbObject.get("adverbs");
 
             // Loop through the string to set up the array

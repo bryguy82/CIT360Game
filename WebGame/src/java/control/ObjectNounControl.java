@@ -80,7 +80,7 @@ public class ObjectNounControl implements Serializable {
         // Transform the tree into an array.
         Object[] ObjectNounArray = readJson(buffer.toString());
 
-        // Globally set the object-noun array in the game.
+        // Globally set the object noun array in the game.
         Game game = new Game();
         game.getTheGame().setObjectNounArray(ObjectNounArray);
 

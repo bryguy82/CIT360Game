@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import control.WordBankControl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,7 +34,26 @@ public class CustomSentence extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+
+            // Start objects for the functions in that class
+            WordBankControl wordControl = new WordBankControl();
+
+            // get the number selections the user chose
+            int personNum = Integer.parseInt(request.getParameter("personNoun"));
+            int adverbNum = Integer.parseInt(request.getParameter("adverb"));
+            int verbTenseNum = Integer.parseInt(request.getParameter("verbTense"));
+            int verbNum = Integer.parseInt(request.getParameter("verb"));
+            int adjectiveNum = Integer.parseInt(request.getParameter("adjective"));
+            int objectNum = Integer.parseInt(request.getParameter("objectNoun"));
+            int sentenceNum = Integer.parseInt(request.getParameter("sentenceNum"));
+            int placeNum = Integer.parseInt(request.getParameter("placeNum"));
+
+            // insert selections to retrieve words and set sentence options
+            wordControl.wordSelection(personNum, adverbNum, verbTenseNum, verbNum, adjectiveNum, objectNum, placeNum);
+
+            // Make sure the selection is smaller than the size of the map -1
+            String sentence = wordControl.assignTheSentence(sentenceNum); // This determines the sentence to use
+
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -41,11 +61,23 @@ public class CustomSentence extends HttpServlet {
             out.println("<meta charset=\"utf-8\">");
             out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">");
             out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css\">");
-            out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"basicCss.css\">");
+            out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"smallCss.css\">");
             out.println("</head>");
             out.println("<body>");
-            out.println("<p>Custom page</p>");
+
+            out.println("<div class=\"title\">");
+            out.println("<h1>Here's your custom crazy sentence!</h1>");
+            out.println("</div>");
+
+            // Display the sentence
+            out.println("<div class=\"sentence\">");
+            out.println("<p>" + sentence + "</p>");
+            out.println("</div>");
+
+            out.println("<div class=\"end\">");
             out.println("<button><a href=\"endGame.html\">Done</a></button>");
+            out.println("</div>");
+
             out.println("</body>");
             out.println("</html>");
         }
