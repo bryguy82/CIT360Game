@@ -2,24 +2,31 @@
 
 <html>
     <head>
-        <title>End of the Road</title>
+        <title>Crazy Sentence Menu</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link type="text/css" rel="stylesheet" href="smallCss.css">
     </head>
     <body>
+
         <div class="title">
-            <h1>Would you like to play again?</h1>
+            <h1>Please choose a game:</h1>
         </div>
 
+        <!-- Form for the random game -->
         <div class="game">
-            <button><a href="gameMenu.html">Yes</a></button>
+            <form action="RandomSentence" method="post">
+                <input type="submit" value="Random Sentence">
+            </form>
         </div>
 
+        <!-- Form for the custom game -->
         <div class="game">
-            <button><a href="index.html">No</a></button>
+            <form action="CustomChoices" method="post">
+                <input type="submit" value="Custom Sentence">
+            </form>
         </div>
-
+        
     </body>
 </html>

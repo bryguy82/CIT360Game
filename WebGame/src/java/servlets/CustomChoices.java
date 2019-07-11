@@ -70,43 +70,43 @@ public class CustomChoices extends HttpServlet {
 
             // Put min and max array/list sizes to be dynamic
             out.println("<label>Sentence "
-                    + "<span id=\"sentenceValue\"></span>"
+                    + "<span id=\"sentenceValue\">0</span>"
                     + "<input id=\"sentence\" type=\"range\" "
                     + "name=\"sentenceNum\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + sentenceMax + "\" autofocus required "
                     + "step=\"1\" oninput=\"adjustSentence(this.value)\" onchange=\"adjustSentence(this.value)\"></label>");
             out.println("<label>Past (0) Present (1) Future (2) "
-                    + "<span id=\"verbTenseValue\"></span>"
+                    + "<span id=\"verbTenseValue\">0</span>"
                     + "<input id=\"verbTense\" type=\"range\" "
                     + "name=\"verbTense\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + verbTenseMax + "\" required "
                     + "step=\"1\" oninput=\"adjustVerbTense(this.value)\" onchange=\"adjustVerbTense(this.value)\"></label>");
 
             out.println("<label>Person Noun "
-                    + "<span id=\"personNounValue\"></span>"
+                    + "<span id=\"personNounValue\">0</span>"
                     + "<input id=\"personNoun\" type=\"range\" "
                     + "name=\"personNoun\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + personMax + "\" required "
                     + "step=\"1\" oninput=\"adjustPersonNoun(this.value)\" onchange=\"adjustPersonNoun(this.value)\"></label>");
             out.println("<label>Adverb "
-                    + "<span id=\"adverbValue\"></span>"
+                    + "<span id=\"adverbValue\">0</span>"
                     + "<input id=\"adverb\" type=\"range\" "
                     + "name=\"adverb\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + adverbMax + "\" required "
                     + "step=\"1\" oninput=\"adjustAdverb(this.value)\" onchange=\"adjustAdverb(this.value)\"></label>");
             out.println("<label>Verb "
-                    + "<span id=\"verbValue\"></span>"
+                    + "<span id=\"verbValue\">0</span>"
                     + "<input id=\"verb\" type=\"range\" "
                     + "name=\"verb\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + verbMax + "\" required "
                     + "step=\"1\" oninput=\"adjustVerb(this.value)\" onchange=\"adjustVerb(this.value)\"></label>");
             out.println("<label>Adjective "
-                    + "<span id=\"adjectiveValue\"></span>"
+                    + "<span id=\"adjectiveValue\">0</span>"
                     + "<input id=\"adjective\" type=\"range\" "
                     + "name=\"adjective\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + adjectiveMax + "\" required "
                     + "step=\"1\" oninput=\"adjustAdjective(this.value)\" onchange=\"adjustAdjective(this.value)\"></label>");
             out.println("<label>Object Noun "
-                    + "<span id=\"objectValue\"></span>"
+                    + "<span id=\"objectValue\">0</span>"
                     + "<input id=\"object\" type=\"range\" "
                     + "name=\"objectNoun\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + objectMax + "\" required "
                     + "step=\"1\" oninput=\"adjustObject(this.value)\" onchange=\"adjustObject(this.value)\"></label>");
             out.println("<label>Place "
-                    + "<span id=\"placeNounValue\"></span>"
+                    + "<span id=\"placeNounValue\">0</span>"
                     + "<input id=\"placeNoun\" type=\"range\" "
                     + "name=\"placeNoun\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + placeMax + "\" required "
                     + "step=\"1\" oninput=\"adjustPlaceNoun(this.value)\" onchange=\"adjustPlaceNoun(this.value)\"></label>");
