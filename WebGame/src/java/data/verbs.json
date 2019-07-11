@@ -3,7 +3,7 @@
         {
             "pastTense": [
                 {
-                    "past": "tooks"
+                    "past": "took"
                 },
                 {
                     "past": "saw"
@@ -55,6 +55,9 @@
                 },
                 {
                     "past": "pushed"
+                },
+                {
+                    "past": "stole"
                 }
             ]
         },
@@ -113,6 +116,9 @@
                 },
                 {
                     "present": "pushes"
+                },
+                {
+                    "present": "steals"
                 }
             ]
         },
@@ -171,6 +177,9 @@
                 },
                 {
                     "future": "push"
+                },
+                {
+                    "future": "steal"
                 }
             ]
         }

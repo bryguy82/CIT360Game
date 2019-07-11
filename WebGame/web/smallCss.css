@@ -17,7 +17,8 @@ body {
     display: grid;
     height: 100%;
     text-align: center;
-    background-color: cadetblue;
+    background-color: #A2CEF2;
+    color: #004D9D;
 }
 
 body div {
@@ -36,6 +37,33 @@ body div.title h1 {
 body form {
     display: inline-grid;
     max-width: 450px;
+}
+
+body div.game form,
+body div.game button a,
+body div.end button a {
+    font-size: 2em;
+}
+
+body#custom div.custom form {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+body div.custom form {
+    grid-gap: 1em;
+}
+
+body#custom {
+    grid-template-rows: 0.2fr 1fr;
+}
+
+body#custom div.custom label{
+    display: grid;
+    grid-template-columns: 1.5fr .5fr;
+    grid-gap: 1em;
+    padding: 0 2em;
+    align-items: center;
 }
 
 body div.sentence {
@@ -57,11 +85,61 @@ body div.end button {
 body div.game button a,
 body div.button a,
 body div.end button a {
-    padding: 50px 100px;
+    padding: 50px 85px;
     text-decoration: none;
 }
 
 a:link, a:visited, a:focus, a:hover, a:active {
-    color: #000000;
+    color: #EDF2F6;
     font-weight: 600;
+}
+
+/*Slider buttons*/
+div.custom form input#sentence::-webkit-slider-thumb,
+div.custom form input#verbTense::-webkit-slider-thumb,
+div.custom form input#personNoun::-webkit-slider-thumb,
+div.custom form input#adverb::-webkit-slider-thumb,
+div.custom form input#verb::-webkit-slider-thumb,
+div.custom form input#adjective::-webkit-slider-thumb,
+div.custom form input#object::-webkit-slider-thumb,
+div.custom form input#placeNoun::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    width: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #6C6D28;
+    cursor: pointer;
+}
+
+/**/
+body form input,
+body div button {
+    background-color: #004D9D;
+    color: #EDF2F6;
+    border-radius: 10px;
+    border: none;
+}
+
+/*Input boxes*/
+div.custom label input {
+    grid-area: 2 / 1 / 3 / 3;
+    border-bottom: 4px solid #004D9D;
+    padding: 5px;
+    background-color: #63A4D7;
+    color: #EDF2F6;
+    border-radius: 10px;
+    -webkit-appearance: none;
+}
+
+div.custom div.submit {
+    padding: 1em 2em;
+}
+
+div.custom div.submit input#submit {
+    background-color: #004D9D;
+    color: #EDF2F6;
+    padding: 10px;
+    border-radius: 10px;
 }

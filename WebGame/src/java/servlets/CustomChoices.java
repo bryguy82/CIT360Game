@@ -58,7 +58,7 @@ public class CustomChoices extends HttpServlet {
             out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css\">");
             out.println("<link type=\"text/css\" rel=\"stylesheet\" href=\"smallCss.css\">");
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body id=\"custom\">");
 
             out.println("<div class=\"title\">");
             out.println("<h1>Please make a selection</h1>");
@@ -69,21 +69,59 @@ public class CustomChoices extends HttpServlet {
             out.println("<form action=\"CustomSentence\" method=\"post\">");
 
             // Put min and max array/list sizes to be dynamic
-            out.println("<label>Sentence<input type=\"number\" name=\"sentenceNum\" min=\"" + min + "\" max=\"" + sentenceMax + "\" required></label>");
-            out.println("<label>Past (0) Present (1) Future (2)<input type=\"number\" name=\"verbTense\" min=\"" + min + "\" max=\"" + verbTenseMax + "\" required></label>");
+            out.println("<label>Sentence "
+                    + "<span id=\"sentenceValue\"></span>"
+                    + "<input id=\"sentence\" type=\"range\" "
+                    + "name=\"sentenceNum\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + sentenceMax + "\" autofocus required "
+                    + "step=\"1\" oninput=\"adjustSentence(this.value)\" onchange=\"adjustSentence(this.value)\"></label>");
+            out.println("<label>Past (0) Present (1) Future (2) "
+                    + "<span id=\"verbTenseValue\"></span>"
+                    + "<input id=\"verbTense\" type=\"range\" "
+                    + "name=\"verbTense\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + verbTenseMax + "\" required "
+                    + "step=\"1\" oninput=\"adjustVerbTense(this.value)\" onchange=\"adjustVerbTense(this.value)\"></label>");
 
-            out.println("<label>Person Noun<input type=\"number\" name=\"personNoun\" min=\"" + min + "\" max=\"" + personMax + "\" autofocus required></label>");
-            out.println("<label>Adverb<input type=\"number\" name=\"adverb\" min=\"" + min + "\" max=\"" + adverbMax + "\" required></label>");
-            out.println("<label>Verb<input type=\"number\" name=\"verb\" min=\"" + min + "\" max=\"" + verbMax + "\" required></label>");
-            out.println("<label>Adjective<input type=\"number\" name=\"adjective\" min=\"" + min + "\" max=\"" + adjectiveMax + "\" required></label>");
-            out.println("<label>Object Noun<input type=\"number\" name=\"objectNoun\" min=\"" + min + "\" max=\"" + objectMax + "\" required></label>");
-            out.println("<label>Place<input type=\"number\" name=\"placeNoun\" min=\"" + min + "\" max=\"" + placeMax + "\" required></label>");
-            out.println("<input type=\"submit\" value=\"Go!\">");
+            out.println("<label>Person Noun "
+                    + "<span id=\"personNounValue\"></span>"
+                    + "<input id=\"personNoun\" type=\"range\" "
+                    + "name=\"personNoun\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + personMax + "\" required "
+                    + "step=\"1\" oninput=\"adjustPersonNoun(this.value)\" onchange=\"adjustPersonNoun(this.value)\"></label>");
+            out.println("<label>Adverb "
+                    + "<span id=\"adverbValue\"></span>"
+                    + "<input id=\"adverb\" type=\"range\" "
+                    + "name=\"adverb\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + adverbMax + "\" required "
+                    + "step=\"1\" oninput=\"adjustAdverb(this.value)\" onchange=\"adjustAdverb(this.value)\"></label>");
+            out.println("<label>Verb "
+                    + "<span id=\"verbValue\"></span>"
+                    + "<input id=\"verb\" type=\"range\" "
+                    + "name=\"verb\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + verbMax + "\" required "
+                    + "step=\"1\" oninput=\"adjustVerb(this.value)\" onchange=\"adjustVerb(this.value)\"></label>");
+            out.println("<label>Adjective "
+                    + "<span id=\"adjectiveValue\"></span>"
+                    + "<input id=\"adjective\" type=\"range\" "
+                    + "name=\"adjective\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + adjectiveMax + "\" required "
+                    + "step=\"1\" oninput=\"adjustAdjective(this.value)\" onchange=\"adjustAdjective(this.value)\"></label>");
+            out.println("<label>Object Noun "
+                    + "<span id=\"objectValue\"></span>"
+                    + "<input id=\"object\" type=\"range\" "
+                    + "name=\"objectNoun\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + objectMax + "\" required "
+                    + "step=\"1\" oninput=\"adjustObject(this.value)\" onchange=\"adjustObject(this.value)\"></label>");
+            out.println("<label>Place "
+                    + "<span id=\"placeNounValue\"></span>"
+                    + "<input id=\"placeNoun\" type=\"range\" "
+                    + "name=\"placeNoun\" value=\"" + min + "\" min=\"" + min + "\" max=\"" + placeMax + "\" required "
+                    + "step=\"1\" oninput=\"adjustPlaceNoun(this.value)\" onchange=\"adjustPlaceNoun(this.value)\"></label>");
+            out.println("<div class=\"submit\"><input id=\"submit\" type=\"submit\" value=\"Go!\"></div>");
 
             out.println("</form>");
             out.println("</div>");
 
             out.println("</body>");
+            
+            out.println("<footer>");
+            out.println("<script src=\"slider.js\"></script>");
+            out.println("</footer>");
+            
+
             out.println("</html>");
         }
     }
