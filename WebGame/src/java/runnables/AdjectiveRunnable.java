@@ -8,6 +8,7 @@ package runnables;
 import control.AdjectiveControl;
 import control.WordBankControl;
 import java.io.IOException;
+import model.Game;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -16,6 +17,8 @@ import org.json.simple.parser.ParseException;
  */
 public class AdjectiveRunnable implements Runnable {
 
+    StringBuilder buffer = null;
+    
     public AdjectiveRunnable() {
         // Empty constructor
     }
@@ -23,13 +26,16 @@ public class AdjectiveRunnable implements Runnable {
     @Override
     public void run() {
         // declare an object
+        Game game = new Game();
         AdjectiveControl adjective = new AdjectiveControl();
         WordBankControl wordBank = new WordBankControl();
         wordBank.getAtomNum().getAndIncrement();
 
         // TODO
         try {
-            adjective.httpAdjectiveBuilder();
+            buffer = adjective.httpAdjectiveBuilder();
+            Object[][] adjectiveObject = adjective.readJson(buffer.toString());
+            game.getTheGame().setAdjectiveDoubleArray(adjectiveObject);
         } catch (IOException | ParseException ex) {
             System.out.println(ex.getMessage());
         }

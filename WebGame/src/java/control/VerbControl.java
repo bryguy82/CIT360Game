@@ -15,7 +15,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.TreeSet;
-import model.Game;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -37,7 +36,7 @@ public class VerbControl implements Serializable {
     // String to hold the data
     String jsonData = null;
 
-    public Object[][] httpVerbBuilder() throws MalformedURLException, IOException, ParseException {
+    public StringBuilder httpVerbBuilder() throws MalformedURLException, IOException, ParseException {
 
         urlSite = "https://raw.githubusercontent.com/bryguy82/CIT360Game/master/WebGame/src/java/data/verbs.json";
         url = new URL(urlSite);
@@ -77,14 +76,7 @@ public class VerbControl implements Serializable {
             }
         }
 
-        // Transform the tree into an array.
-        Object[][] verbObject = readJson(buffer.toString());
-
-        // Globally set the verb object in the game.
-        Game game = new Game();
-        game.getTheGame().setVerbDoubleArray(verbObject);
-
-        return verbObject;
+        return buffer;
     }
 
     public Object[][] readJson(String buffer) throws IOException, ParseException {

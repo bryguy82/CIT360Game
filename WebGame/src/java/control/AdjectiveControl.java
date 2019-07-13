@@ -15,7 +15,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.TreeSet;
-import model.Game;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -37,7 +36,7 @@ public class AdjectiveControl implements Serializable {
     // String to hold the data
     String jsonData = null;
 
-    public Object[][] httpAdjectiveBuilder() throws MalformedURLException, IOException, ParseException {
+    public StringBuilder httpAdjectiveBuilder() throws MalformedURLException, IOException, ParseException {
 
         urlSite = "https://raw.githubusercontent.com/bryguy82/CIT360Game/master/WebGame/src/java/data/adjectives.json";
         url = new URL(urlSite);
@@ -77,13 +76,7 @@ public class AdjectiveControl implements Serializable {
             }
         }
 
-        // Transform the tree into a double array.
-        Object[][] adjectiveObject = readJson(buffer.toString());
-
-        // Globally set the adjective object in the game.
-        Game game = new Game();
-        game.getTheGame().setAdjectiveDoubleArray(adjectiveObject);
-        return adjectiveObject;
+        return buffer;
     }
 
     public Object[][] readJson(String buffer) throws IOException, ParseException {
@@ -151,13 +144,16 @@ public class AdjectiveControl implements Serializable {
     public static TreeSet<Integer> buildAdjectiveQuantity() {
         // Create quantity tree
         TreeSet<Integer> addQuantity = new TreeSet<>();
-
+        
         int min = 2;
         int max = 50;
         int value = 0;
 
         for (int i = 0; i < 20; i++) {
             value = (int) (Math.random() * (max - min) + 1);
+            if (addQuantity.contains(value)) {
+                i--; // Step backwards for duplicate values.
+            }
             addQuantity.add(value);
         }
         return addQuantity;
@@ -190,55 +186,4 @@ public class AdjectiveControl implements Serializable {
         }
         return adjectiveOrder;
     }
-
-//    public Object build(int selection, int listSize, Object[] adjectiveQuantityTree) {
-//
-//        adjectiveQuantityTree = VocabularyControl.buildAdjectiveQuantity().toArray();
-//        Object[] adjectiveQualityTree = VocabularyControl.buildAdjectiveQuality().toArray();
-//        Object[] adjectiveSizeTree = VocabularyControl.buildAdjectiveSize().toArray();
-//        Object[] adjectiveShapeTree = VocabularyControl.buildAdjectiveShape().toArray();
-//        Object[] adjectiveColorTree = VocabularyControl.buildAdjectiveColor().toArray();
-//
-//        //selection = (int) Math.round(Math.random() * (30 - 1));
-//        listSize = (int) Math.round(Math.random() * (4 - 0));
-//
-//        if (selection < 0) {
-//            throw new ArrayIndexOutOfBoundsException("Number selected was less than zero.");
-//            //return -1
-//        }
-//        while (selection > adjectiveQuantityTree.length - 1) {
-//            if (selection > 20) {
-//                throw new ArrayIndexOutOfBoundsException("Number selected was greater than twenty.");
-//                //return -2
-//            }
-//            selection = selection - adjectiveQuantityTree.length;
-//        }
-//
-//        Object[][] adjectiveOrder = buildTwoDimentionalArray(adjectiveQuantityTree, adjectiveQualityTree,
-//                adjectiveSizeTree, adjectiveShapeTree, adjectiveColorTree);
-//
-//        Adjective adjective = new Adjective();
-//
-//        // Select adjectives based on user input
-//        for (int i = 0; i < 5; i++) {
-//            switch (i) {
-//                case 0:
-//                    adjective.setQuantity(adjectiveOrder[i][selection].toString());
-//                    break;
-//                case 1:
-//                    adjective.setQuality(adjectiveOrder[i][selection].toString());
-//                    break;
-//                case 2:
-//                    adjective.setSize(adjectiveOrder[i][selection].toString());
-//                    break;
-//                case 3:
-//                    adjective.setShape(adjectiveOrder[i][selection].toString());
-//                    break;
-//                default:
-//                    adjective.setColor(adjectiveOrder[i][selection].toString());
-//                    break;
-//            }
-//        }
-//        return adjective;
-//    }
 }

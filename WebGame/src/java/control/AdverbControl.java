@@ -37,7 +37,7 @@ public class AdverbControl implements Serializable {
     // String to hold the data
     String jsonData = null;
 
-    public Object[] httpAdverbBuilder() throws MalformedURLException, IOException, ParseException {
+    public StringBuilder httpAdverbBuilder() throws MalformedURLException, IOException, ParseException {
 
         urlSite = "https://raw.githubusercontent.com/bryguy82/CIT360Game/master/WebGame/src/java/data/adverbs.json";
         url = new URL(urlSite);
@@ -77,14 +77,7 @@ public class AdverbControl implements Serializable {
             }
         }
 
-        // Transform the tree into an array.
-        Object[] adverbArray = readJson(buffer.toString());
-
-        // Globally set the adverb array in the game.
-        Game game = new Game();
-        game.getTheGame().setAdverbArray(adverbArray);
-
-        return adverbArray;
+        return buffer;
     }
 
     public Object[] readJson(String buffer) throws IOException, ParseException {

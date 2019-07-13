@@ -85,7 +85,16 @@ public class RandomSentence extends HttpServlet {
             out.println("<div class=\"sentence\">");
             out.println("<p>" + sentence + "</p>");
             out.println("</div>");
-
+            // Used to view adjective array elements
+//            Object[][] a = game.getTheGame().getAdjectiveDoubleArray();
+//            for (int i = 0; i < a.length; i++) {
+//                out.println("<p>");
+//                for (int j = 0; j < a[0].length; j++) {
+//                    out.println(a[i][j]);
+//                }
+//                out.println("</p>");
+//            }
+            
             out.println("<div class=\"end\">");
             out.println("<button><a href=\"endGame.html\">Done</a></button>");
             out.println("</div>");

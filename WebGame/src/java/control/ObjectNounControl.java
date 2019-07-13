@@ -37,7 +37,7 @@ public class ObjectNounControl implements Serializable {
     // String to hold the data
     String jsonData = null;
 
-    public Object[] httpObjectNounBuilder() throws MalformedURLException, IOException, ParseException {
+    public StringBuilder httpObjectNounBuilder() throws MalformedURLException, IOException, ParseException {
 
         urlSite = "https://raw.githubusercontent.com/bryguy82/CIT360Game/master/WebGame/src/java/data/objectNouns.json";
         url = new URL(urlSite);
@@ -77,14 +77,7 @@ public class ObjectNounControl implements Serializable {
             }
         }
 
-        // Transform the tree into an array.
-        Object[] ObjectNounArray = readJson(buffer.toString());
-
-        // Globally set the object noun array in the game.
-        Game game = new Game();
-        game.getTheGame().setObjectNounArray(ObjectNounArray);
-
-        return ObjectNounArray;
+        return buffer;
     }
 
     public Object[] readJson(String buffer) throws IOException, ParseException {

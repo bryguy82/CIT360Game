@@ -8,6 +8,7 @@ package runnables;
 import control.VerbControl;
 import control.WordBankControl;
 import java.io.IOException;
+import model.Game;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -16,6 +17,8 @@ import org.json.simple.parser.ParseException;
  */
 public class VerbRunnable implements Runnable {
 
+    StringBuilder buffer = null;
+    
     public VerbRunnable() {
         // Empty constructor
     }
@@ -23,13 +26,16 @@ public class VerbRunnable implements Runnable {
     @Override
     public void run() {
         // declare an object
+        Game game = new Game();
         VerbControl verb = new VerbControl();
         WordBankControl wordBank = new WordBankControl();
         wordBank.getAtomNum().getAndIncrement();
 
         // TODO
         try {
-            verb.httpVerbBuilder();
+            buffer = verb.httpVerbBuilder();
+            Object[][] verbObject = verb.readJson(buffer.toString());
+            game.getTheGame().setVerbDoubleArray(verbObject);
         } catch (IOException | ParseException ex) {
             System.out.println(ex.getMessage());
         }
