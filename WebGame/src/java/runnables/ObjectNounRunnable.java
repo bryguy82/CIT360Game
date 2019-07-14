@@ -31,7 +31,6 @@ public class ObjectNounRunnable implements Runnable {
         WordBankControl wordBank = new WordBankControl();
         wordBank.getAtomNum().getAndIncrement();
 
-        // TODO
         try {
             buffer = objectNoun.httpObjectNounBuilder();
             Object[] objectNounObject = objectNoun.readJson(buffer.toString());

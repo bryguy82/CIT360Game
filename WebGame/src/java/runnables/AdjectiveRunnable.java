@@ -31,7 +31,6 @@ public class AdjectiveRunnable implements Runnable {
         WordBankControl wordBank = new WordBankControl();
         wordBank.getAtomNum().getAndIncrement();
 
-        // TODO
         try {
             buffer = adjective.httpAdjectiveBuilder();
             Object[][] adjectiveObject = adjective.readJson(buffer.toString());

@@ -31,7 +31,6 @@ public class VerbRunnable implements Runnable {
         WordBankControl wordBank = new WordBankControl();
         wordBank.getAtomNum().getAndIncrement();
 
-        // TODO
         try {
             buffer = verb.httpVerbBuilder();
             Object[][] verbObject = verb.readJson(buffer.toString());

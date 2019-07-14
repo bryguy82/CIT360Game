@@ -27,7 +27,6 @@ public class PlaceNounRunnable implements Runnable {
         WordBankControl wordBank = new WordBankControl();
         wordBank.getAtomNum().getAndIncrement();
 
-        // TODO
         try {
             buffer = placeNoun.httpPlaceNounBuilder();
             Object[] placeNounObject = placeNoun.readJson(buffer.toString());

@@ -31,7 +31,6 @@ public class AdverbRunnable implements Runnable {
         WordBankControl wordBank = new WordBankControl();
         wordBank.getAtomNum().getAndIncrement();
 
-        // TODO
         try {
             buffer = adverb.httpAdverbBuilder();
             Object[] adverbObject = adverb.readJson(buffer.toString());
